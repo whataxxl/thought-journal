@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://whataxxl.github.io/想法记录",
+  "homepage": "https://whataxxl.github.io/thought-journal",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
