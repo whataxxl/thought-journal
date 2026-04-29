@@ -1,9 +1,10 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Pencil, Calendar, Settings } from 'lucide-react';
+import { Pencil, List, CalendarDays, Settings } from 'lucide-react';
 
 const TABS = [
   { path: '/', label: '今天', icon: Pencil },
-  { path: '/browse', label: '浏览', icon: Calendar },
+  { path: '/all', label: '全部', icon: List },
+  { path: '/calendar', label: '日历', icon: CalendarDays },
   { path: '/settings', label: '设置', icon: Settings },
 ] as const;
 
@@ -14,7 +15,7 @@ export default function TabBar() {
   return (
     <div className="flex bg-white border-t border-gray-200 pb-[env(safe-area-inset-bottom,0px)]">
       {TABS.map(({ path, label, icon: Icon }) => {
-        const active = pathname === path;
+        const active = pathname === path || (path === '/' && pathname === '/');
         return (
           <button key={path} onClick={() => navigate(path)}
             className="flex-1 flex flex-col items-center py-2">
