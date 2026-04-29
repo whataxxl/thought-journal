@@ -1,11 +1,11 @@
 {
-  "name": "Thought Journal",
-  "short_name": "Thoughts",
-  "description": "Record your thoughts with time and location",
+  "name": "想法记录",
+  "short_name": "想法",
+  "description": "记录你的想法，附带时间和位置",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F2F2F7",
-  "theme_color": "#007AFF",
+  "background_color": "#FDF5E6",
+  "theme_color": "#FFBF00",
   "orientation": "portrait",
   "icons": [
     {
