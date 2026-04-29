@@ -13,14 +13,14 @@ export default function TabBar() {
   const { pathname } = useLocation();
 
   return (
-    <div className="flex bg-white border-t border-gray-200 pb-[env(safe-area-inset-bottom,0px)]">
+    <div className="flex bg-cream-light border-t border-chocolate/10 pb-[env(safe-area-inset-bottom,0px)]">
       {TABS.map(({ path, label, icon: Icon }) => {
         const active = pathname === path;
         return (
           <button key={path} onClick={() => navigate(path)}
             className="flex-1 flex flex-col items-center py-2">
-            <Icon size={24} color={active ? '#007AFF' : '#8E8E93'} />
-            <span className={`text-[10px] font-semibold mt-0.5 ${active ? 'text-[#007AFF]' : 'text-[#8E8E93]'}`}>
+            <Icon size={24} color={active ? '#FFBF00' : '#A1887F'} />
+            <span className={`text-[10px] font-semibold mt-0.5 ${active ? 'text-amber' : 'text-chocolate/40'}`}>
               {label}
             </span>
           </button>

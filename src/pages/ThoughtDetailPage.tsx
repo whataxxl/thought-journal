@@ -37,15 +37,15 @@ export default function ThoughtDetailPage() {
     refresh();
   }, [thoughtId, selectedPara, refresh, getCurrentLocation]);
 
-  if (loading) return <div className="flex-1 flex items-center justify-center bg-[#F2F2F7]"><div className="w-8 h-8 border-2 border-[#007AFF] border-t-transparent rounded-full animate-spin" /></div>;
-  if (!thought) return <div className="flex-1 flex items-center justify-center bg-[#F2F2F7]"><p className="text-gray-500">未找到</p></div>;
+  if (loading) return <div className="flex-1 flex items-center justify-center bg-cream"><div className="w-8 h-8 border-2 border-amber border-t-transparent rounded-full animate-spin" /></div>;
+  if (!thought) return <div className="flex-1 flex items-center justify-center bg-cream"><p className="text-chocolate/60">未找到</p></div>;
 
   const paragraphs = thought.content.split('\n').filter((p) => p.trim());
   const generalAnnotations = annotations.filter((a) => a.paragraphIndex === 0);
 
   return (
-    <div className="flex flex-col h-full bg-[#F2F2F7]">
-      <div className="flex items-center gap-3 px-4 pt-[max(env(safe-area-inset-top),8px)] pb-3 bg-[#F2F2F7]">
+    <div className="flex flex-col h-full bg-cream">
+      <div className="flex items-center gap-3 px-4 pt-[max(env(safe-area-inset-top),8px)] pb-3 bg-cream">
         <button onClick={() => navigate(-1)}><ArrowLeft size={24} /></button>
       </div>
 
@@ -54,18 +54,18 @@ export default function ThoughtDetailPage() {
           <LocationBadge dateTime={thought.createdAt} placeName={thought.placeName} />
           {thought.mood && <span className="text-xl">{thought.mood}</span>}
           {thought.tags.map((tag) => (
-            <span key={tag} className="bg-blue-50 text-[#007AFF] text-[11px] font-medium px-1.5 py-0.5 rounded">{tag}</span>
+            <span key={tag} className="bg-amber/15 text-amber text-[11px] font-medium px-1.5 py-0.5 rounded">{tag}</span>
           ))}
         </div>
 
-        <div className="bg-white rounded-xl p-4 mb-4">
+        <div className="bg-cream-light rounded-[28px] p-4 mb-4 shadow-card">
           {paragraphs.map((para, i) => (
             <div key={i}>
               <div onContextMenu={(e) => { e.preventDefault(); setSelectedPara(i + 1); }}
-                className={`p-1 rounded-lg mb-2 ${selectedPara === i + 1 ? 'bg-blue-50' : ''}`}>
-                <p className="text-[17px] text-black leading-[26px]">{para}</p>
+                className={`p-1 rounded-lg mb-2 ${selectedPara === i + 1 ? 'bg-amber/15' : ''}`}>
+                <p className="text-[17px] text-chocolate leading-[26px]">{para}</p>
                 {selectedPara === i + 1 && (
-                  <p className="text-xs text-[#007AFF] mt-1">在下方添加批注</p>
+                  <p className="text-xs text-amber mt-1">在下方添加批注</p>
                 )}
               </div>
               {annotations.filter((a) => a.paragraphIndex === i + 1).map((a, ai, arr) => (
@@ -73,19 +73,19 @@ export default function ThoughtDetailPage() {
               ))}
             </div>
           ))}
-          {paragraphs.length === 0 && <p className="text-[17px] text-black leading-[26px]">{thought.content}</p>}
+          {paragraphs.length === 0 && <p className="text-[17px] text-chocolate leading-[26px]">{thought.content}</p>}
         </div>
 
         {thought.media.length > 0 && (
           <div className="mb-4 space-y-2">
             {thought.media.map((m) => (
               <div key={m.id} className="rounded-xl overflow-hidden">
-                {m.type === 'image' && <img src={m.uri} className="w-full h-[200px] object-cover rounded-xl" alt="" />}
+                {m.type === 'image' && <img src={m.uri} className="w-full h-[200px] object-cover rounded-[24px]" alt="" />}
                 {m.type === 'audio' && (
                   <button onClick={() => { const a = new Audio(m.uri); audioRef.current = a; a.play(); }}
-                    className="flex items-center gap-3 bg-white rounded-xl p-4 w-full">
-                    <PlayCircle size={32} className="text-[#007AFF]" />
-                    <span className="text-[15px] text-[#007AFF] font-medium">播放录音</span>
+                    className="flex items-center gap-3 bg-cream-light rounded-[24px] p-4 w-full shadow-card">
+                    <PlayCircle size={32} className="text-amber" />
+                    <span className="text-[15px] text-amber font-medium">播放录音</span>
                   </button>
                 )}
               </div>
@@ -95,11 +95,11 @@ export default function ThoughtDetailPage() {
 
         {generalAnnotations.length > 0 && (
           <>
-            <p className="text-xs font-semibold text-gray-500 uppercase mb-2">备注</p>
+            <p className="text-xs font-semibold text-chocolate/60 uppercase mb-2">备注</p>
             {generalAnnotations.map((a, i) => <AnnotationItem key={a.id} annotation={a} isLast={i === generalAnnotations.length - 1} />)}
           </>
         )}
-        {annotations.length === 0 && <p className="text-center text-gray-400 mt-8">长按段落进行批注</p>}
+        {annotations.length === 0 && <p className="text-center text-chocolate/50 mt-8">长按段落进行批注</p>}
         <div className="h-8" />
       </div>
 

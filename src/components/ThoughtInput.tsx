@@ -13,9 +13,10 @@ export interface SaveData {
 
 interface Props {
   onSave: (content: string, data: SaveData) => Promise<void>;
+  className?: string;
 }
 
-export default function ThoughtInput({ onSave }: Props) {
+export default function ThoughtInput({ onSave, className }: Props) {
   const [text, setText] = useState('');
   const [images, setImages] = useState<string[]>([]);
   const [audioUri, setAudioUri] = useState<string | null>(null);
@@ -33,9 +34,9 @@ export default function ThoughtInput({ onSave }: Props) {
   };
 
   return (
-    <div className="bg-white rounded-xl p-4 mb-4">
+    <div className={`bg-cream-light rounded-[28px] p-4 mb-4 shadow-card ${className ?? ''}`}>
       <textarea
-        className="w-full text-[17px] leading-6 text-black placeholder-gray-400 resize-none outline-none min-h-[80px]"
+        className="w-full text-[17px] leading-6 text-chocolate placeholder-chocolate/40 resize-none outline-none min-h-[80px]"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="此刻的想法..."
@@ -48,7 +49,7 @@ export default function ThoughtInput({ onSave }: Props) {
         <button
           onClick={handleSave}
           disabled={saving}
-          className="bg-[#007AFF] text-white font-semibold px-6 py-2 rounded-lg disabled:opacity-50"
+          className="bg-amber text-cream-light font-semibold px-6 py-2 rounded-lg disabled:opacity-50"
         >
           {saving ? '保存中...' : '记录'}
         </button>

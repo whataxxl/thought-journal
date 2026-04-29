@@ -22,20 +22,20 @@ export default function TagInput({ tags, onChange }: Props) {
         <div className="flex gap-1.5 mb-2 flex-wrap">
           {tags.map((tag, i) => (
             <button key={i} onClick={() => onChange(tags.filter((_, j) => j !== i))}
-              className="flex items-center gap-1 bg-blue-50 text-[#007AFF] text-[13px] font-medium px-2 py-1 rounded-md">
+              className="flex items-center gap-1 bg-amber/15 text-amber text-[13px] font-medium px-2 py-1 rounded-md">
               {tag} <X size={14} />
             </button>
           ))}
         </div>
       )}
       <div className="flex items-center gap-1.5">
-        <Tag size={16} className="text-gray-400" />
+        <Tag size={16} className="text-chocolate/40" />
         <input
           value={text}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={(e) => { if (e.key === 'Enter') addTag(); }}
           placeholder="添加标签..."
-          className="flex-1 text-[13px] outline-none bg-transparent text-black placeholder-gray-400"
+          className="flex-1 text-[13px] outline-none bg-transparent text-chocolate placeholder-chocolate/40"
         />
       </div>
     </div>

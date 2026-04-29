@@ -26,8 +26,8 @@ export default function CalendarPage() {
   [thoughts, selectedDate]);
 
   return (
-    <div className="flex flex-col h-full bg-[#F2F2F7] px-4 pt-[max(env(safe-area-inset-top),16px)]">
-      <h1 className="text-[28px] font-bold text-black mt-2 mb-4">日历</h1>
+    <div className="flex flex-col h-full bg-cream px-4 pt-[max(env(safe-area-inset-top),16px)]">
+      <h1 className="text-[28px] font-bold text-chocolate mt-2 mb-4">日历</h1>
 
       <div className="overflow-y-auto flex-1 pb-4">
         <Calendar
@@ -40,11 +40,11 @@ export default function CalendarPage() {
 
         {selectedDate && (
           <div className="mt-4">
-            <p className="text-xs font-semibold text-gray-500 uppercase mb-2">{selectedDate}</p>
+            <p className="text-xs font-semibold text-chocolate/60 uppercase mb-2">{selectedDate}</p>
             {byDate.map((t) => (
               <ThoughtCard key={t.id} thought={t} onClick={() => navigate(`/thought/${t.id}`)} />
             ))}
-            {byDate.length === 0 && <p className="text-center text-gray-400 mt-4">这一天没有想法</p>}
+            {byDate.length === 0 && <p className="text-center text-chocolate/50 mt-4">这一天没有想法</p>}
           </div>
         )}
       </div>

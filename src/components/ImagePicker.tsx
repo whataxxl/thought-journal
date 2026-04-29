@@ -27,9 +27,9 @@ export default function ImagePicker({ images, onChange }: Props) {
               <img src={uri} className="w-[72px] h-[72px] rounded-lg object-cover" alt="" />
               <button
                 onClick={() => onChange(images.filter((_, j) => j !== i))}
-                className="absolute -top-1.5 -right-1.5 bg-white rounded-full"
+                className="absolute -top-1.5 -right-1.5 bg-cream-light rounded-full"
               >
-                <X size={18} className="text-red-500" />
+                <X size={18} className="text-coral" />
               </button>
             </div>
           ))}
@@ -40,13 +40,13 @@ export default function ImagePicker({ images, onChange }: Props) {
           <input ref={cameraRef} type="file" accept="image/*" capture="environment"
             className="hidden" onChange={(e) => handleFiles(e.target.files)} />
           <button onClick={() => cameraRef.current?.click()}
-            className="flex items-center gap-1 text-sm text-gray-500">
+            className="flex items-center gap-1 text-sm text-chocolate/60">
             <Camera size={22} /> 拍照
           </button>
           <input ref={fileRef} type="file" accept="image/*" multiple
             className="hidden" onChange={(e) => handleFiles(e.target.files)} />
           <button onClick={() => fileRef.current?.click()}
-            className="flex items-center gap-1 text-sm text-gray-500">
+            className="flex items-center gap-1 text-sm text-chocolate/60">
             <Image size={22} /> 相册
           </button>
         </div>

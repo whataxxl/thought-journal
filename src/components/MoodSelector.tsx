@@ -22,12 +22,12 @@ export default function MoodSelector({ mood, onChange }: Props) {
       <div className="flex items-center gap-0.5">
         {PRESET.map((e) => (
           <button key={e} onClick={() => onChange(mood === e ? null : e)}
-            className={`w-8 h-8 rounded-full flex items-center justify-center text-lg ${mood === e ? 'bg-blue-50' : ''}`}>
+            className={`w-8 h-8 rounded-full flex items-center justify-center text-lg ${mood === e ? 'bg-amber/15' : ''}`}>
             {e}
           </button>
         ))}
         <button onClick={() => setShowCustom(!showCustom)}
-          className={`w-8 h-8 rounded-full flex items-center justify-center text-gray-400 font-semibold ${showCustom ? 'bg-blue-50' : ''}`}>
+          className={`w-8 h-8 rounded-full flex items-center justify-center text-chocolate/50 font-semibold ${showCustom ? 'bg-amber/15' : ''}`}>
           ...
         </button>
       </div>
@@ -35,8 +35,8 @@ export default function MoodSelector({ mood, onChange }: Props) {
         <div className="flex items-center gap-2 mt-2">
           <input value={custom} onChange={(e) => setCustom(e.target.value)}
             onKeyDown={(e) => { if (e.key === 'Enter') submitCustom(); }}
-            placeholder="自定义心情..." className="flex-1 bg-gray-100 rounded-lg px-3 py-1.5 text-[15px] outline-none" />
-          <button onClick={submitCustom} className="text-[#007AFF] font-semibold text-[15px]">完成</button>
+            placeholder="自定义心情..." className="flex-1 bg-chocolate/5 rounded-lg px-3 py-1.5 text-[15px] outline-none" />
+          <button onClick={submitCustom} className="text-amber font-semibold text-[15px]">完成</button>
         </div>
       )}
     </div>

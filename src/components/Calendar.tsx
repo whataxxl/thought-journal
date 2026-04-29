@@ -42,14 +42,14 @@ export default function Calendar({ thoughts, year, month, selectedDate, onSelect
   return (
     <div>
       <div className="flex items-center justify-between mb-3">
-        <button onClick={onPrevMonth} className="w-8 h-8 flex items-center justify-center text-gray-500 text-lg">&lt;</button>
-        <span className="text-[17px] font-semibold text-black">{year}年{month + 1}月</span>
-        <button onClick={onNextMonth} className="w-8 h-8 flex items-center justify-center text-gray-500 text-lg">&gt;</button>
+        <button onClick={onPrevMonth} className="w-8 h-8 flex items-center justify-center text-chocolate/60 text-lg">&lt;</button>
+        <span className="text-[17px] font-semibold text-chocolate">{year}年{month + 1}月</span>
+        <button onClick={onNextMonth} className="w-8 h-8 flex items-center justify-center text-chocolate/60 text-lg">&gt;</button>
       </div>
 
       <div className="grid grid-cols-7 text-center mb-1">
         {DAY_LABELS.map((d) => (
-          <div key={d} className="text-[11px] font-medium text-gray-400 py-1">{d}</div>
+          <div key={d} className="text-[11px] font-medium text-chocolate/50 py-1">{d}</div>
         ))}
       </div>
 
@@ -66,10 +66,10 @@ export default function Calendar({ thoughts, year, month, selectedDate, onSelect
               key={day}
               onClick={() => onSelectDate(isSelected ? null : dateStr)}
               className={`relative flex flex-col items-center justify-center rounded-lg py-1 ${
-                isSelected ? 'bg-[#007AFF]' : isToday ? 'bg-blue-50' : ''
+                isSelected ? 'bg-amber' : isToday ? 'bg-amber/15' : ''
               }`}
             >
-              <span className={`text-[15px] ${isSelected ? 'text-white font-semibold' : isToday ? 'text-[#007AFF] font-semibold' : 'text-black'}`}>
+              <span className={`text-[15px] ${isSelected ? 'text-cream-light font-semibold' : isToday ? 'text-amber font-semibold' : 'text-chocolate'}`}>
                 {day}
               </span>
               {mood && (
