@@ -35,8 +35,8 @@ export default function MoodSelector({ mood, onChange }: Props) {
         <div className="flex items-center gap-2 mt-2">
           <input value={custom} onChange={(e) => setCustom(e.target.value)}
             onKeyDown={(e) => { if (e.key === 'Enter') submitCustom(); }}
-            placeholder="Custom mood..." className="flex-1 bg-gray-100 rounded-lg px-3 py-1.5 text-[15px] outline-none" />
-          <button onClick={submitCustom} className="text-[#007AFF] font-semibold text-[15px]">Done</button>
+            placeholder="自定义心情..." className="flex-1 bg-gray-100 rounded-lg px-3 py-1.5 text-[15px] outline-none" />
+          <button onClick={submitCustom} className="text-[#007AFF] font-semibold text-[15px]">完成</button>
         </div>
       )}
     </div>

@@ -34,7 +34,7 @@ export default function TagInput({ tags, onChange }: Props) {
           value={text}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={(e) => { if (e.key === 'Enter') addTag(); }}
-          placeholder="Add tag..."
+          placeholder="添加标签..."
           className="flex-1 text-[13px] outline-none bg-transparent text-black placeholder-gray-400"
         />
       </div>

@@ -7,7 +7,7 @@ interface Props {
   onCancel?: () => void;
 }
 
-export default function AnnotationInput({ onSave, placeholder = 'Add a note...', onCancel }: Props) {
+export default function AnnotationInput({ onSave, placeholder = '添加备注...', onCancel }: Props) {
   const [text, setText] = useState('');
   const [saving, setSaving] = useState(false);
 
@@ -32,13 +32,13 @@ export default function AnnotationInput({ onSave, placeholder = 'Add a note...',
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder={onCancel ? 'Type your annotation...' : placeholder}
+          placeholder={onCancel ? '输入批注...' : placeholder}
           className="flex-1 text-[15px] bg-gray-100 rounded-lg px-3 py-2 outline-none resize-none min-h-[40px] max-h-[80px]"
           rows={2}
         />
         <button onClick={handleSave} disabled={saving}
           className="bg-[#007AFF] text-white font-semibold rounded-lg px-4 py-2 text-[15px] disabled:opacity-50">
-          {saving ? '...' : 'Add'}
+          {saving ? '...' : '添加'}
         </button>
       </div>
     </div>

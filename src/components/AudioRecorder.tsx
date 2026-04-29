@@ -53,7 +53,7 @@ export default function AudioRecorder({ audioUri, onChange }: Props) {
     return (
       <div className="flex items-center gap-1.5">
         <Mic size={16} className="text-red-500" />
-        <span className="text-sm text-gray-500 flex-1">Saved</span>
+        <span className="text-sm text-gray-500 flex-1">已保存</span>
         <button onClick={() => onChange(null)}><X size={18} className="text-gray-400" /></button>
       </div>
     );
@@ -64,7 +64,7 @@ export default function AudioRecorder({ audioUri, onChange }: Props) {
       className="flex items-center gap-1 text-sm text-gray-500">
       {isRecording ? <StopCircle size={22} className="text-red-500" /> : <Mic size={22} />}
       <span className={isRecording ? 'text-red-500 font-semibold' : ''}>
-        {isRecording ? `Recording ${formatTime(elapsed)}` : 'Voice'}
+        {isRecording ? `录音中 ${formatTime(elapsed)}` : '语音'}
       </span>
     </button>
   );

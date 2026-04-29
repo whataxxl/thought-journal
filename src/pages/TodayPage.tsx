@@ -26,13 +26,13 @@ export default function TodayPage() {
 
   return (
     <div className="flex flex-col h-full bg-[#F2F2F7] px-4 pt-[max(env(safe-area-inset-top),16px)]">
-      <h1 className="text-[28px] font-bold text-black mt-2 mb-4">Today</h1>
+      <h1 className="text-[28px] font-bold text-black mt-2 mb-4">今天</h1>
       <div className="overflow-y-auto flex-1 pb-4">
         <ThoughtInput onSave={handleSave} />
         {!loading && thoughts.length === 0 && (
           <div className="flex flex-col items-center py-16">
-            <p className="text-[15px] font-semibold text-gray-500">No thoughts yet</p>
-            <p className="text-sm text-gray-400 mt-1">Capture your idea above</p>
+            <p className="text-[15px] font-semibold text-gray-500">还没有想法</p>
+            <p className="text-sm text-gray-400 mt-1">在上方记录你的想法</p>
           </div>
         )}
         {thoughts.map((t) => (

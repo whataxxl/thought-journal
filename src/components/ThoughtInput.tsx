@@ -38,7 +38,7 @@ export default function ThoughtInput({ onSave }: Props) {
         className="w-full text-[17px] leading-6 text-black placeholder-gray-400 resize-none outline-none min-h-[80px]"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="What's on your mind?"
+        placeholder="此刻的想法..."
       />
       <ImagePicker images={images} onChange={setImages} />
       <MoodSelector mood={mood} onChange={setMood} />
@@ -50,7 +50,7 @@ export default function ThoughtInput({ onSave }: Props) {
           disabled={saving}
           className="bg-[#007AFF] text-white font-semibold px-6 py-2 rounded-lg disabled:opacity-50"
         >
-          {saving ? 'Saving...' : 'Record'}
+          {saving ? '保存中...' : '记录'}
         </button>
       </div>
     </div>

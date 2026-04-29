@@ -38,7 +38,7 @@ export default function ThoughtDetailPage() {
   }, [thoughtId, selectedPara, refresh, getCurrentLocation]);
 
   if (loading) return <div className="flex-1 flex items-center justify-center bg-[#F2F2F7]"><div className="w-8 h-8 border-2 border-[#007AFF] border-t-transparent rounded-full animate-spin" /></div>;
-  if (!thought) return <div className="flex-1 flex items-center justify-center bg-[#F2F2F7]"><p className="text-gray-500">Not found</p></div>;
+  if (!thought) return <div className="flex-1 flex items-center justify-center bg-[#F2F2F7]"><p className="text-gray-500">未找到</p></div>;
 
   const paragraphs = thought.content.split('\n').filter((p) => p.trim());
   const generalAnnotations = annotations.filter((a) => a.paragraphIndex === 0);
@@ -65,7 +65,7 @@ export default function ThoughtDetailPage() {
                 className={`p-1 rounded-lg mb-2 ${selectedPara === i + 1 ? 'bg-blue-50' : ''}`}>
                 <p className="text-[17px] text-black leading-[26px]">{para}</p>
                 {selectedPara === i + 1 && (
-                  <p className="text-xs text-[#007AFF] mt-1">Add annotation below</p>
+                  <p className="text-xs text-[#007AFF] mt-1">在下方添加批注</p>
                 )}
               </div>
               {annotations.filter((a) => a.paragraphIndex === i + 1).map((a, ai, arr) => (
@@ -85,7 +85,7 @@ export default function ThoughtDetailPage() {
                   <button onClick={() => { const a = new Audio(m.uri); audioRef.current = a; a.play(); }}
                     className="flex items-center gap-3 bg-white rounded-xl p-4 w-full">
                     <PlayCircle size={32} className="text-[#007AFF]" />
-                    <span className="text-[15px] text-[#007AFF] font-medium">Play recording</span>
+                    <span className="text-[15px] text-[#007AFF] font-medium">播放录音</span>
                   </button>
                 )}
               </div>
@@ -95,16 +95,16 @@ export default function ThoughtDetailPage() {
 
         {generalAnnotations.length > 0 && (
           <>
-            <p className="text-xs font-semibold text-gray-500 uppercase mb-2">Notes</p>
+            <p className="text-xs font-semibold text-gray-500 uppercase mb-2">备注</p>
             {generalAnnotations.map((a, i) => <AnnotationItem key={a.id} annotation={a} isLast={i === generalAnnotations.length - 1} />)}
           </>
         )}
-        {annotations.length === 0 && <p className="text-center text-gray-400 mt-8">Long press a paragraph to annotate it</p>}
+        {annotations.length === 0 && <p className="text-center text-gray-400 mt-8">长按段落进行批注</p>}
         <div className="h-8" />
       </div>
 
       <AnnotationInput onSave={handleSaveAnnotation}
-        placeholder={selectedPara ? `Annotate paragraph ${selectedPara}...` : 'Add a general note...'}
+        placeholder={selectedPara ? `批注第 ${selectedPara} 段...` : '添加备注...'}
         onCancel={selectedPara ? () => setSelectedPara(null) : undefined} />
     </div>
   );

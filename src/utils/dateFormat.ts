@@ -11,10 +11,9 @@ export function formatDate(isoString: string): string {
 }
 
 export function formatDateDisplay(isoString: string): string {
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const days = ['周日','周一','周二','周三','周四','周五','周六'];
   const d = new Date(isoString);
-  return `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+  return `${d.getMonth() + 1}月${d.getDate()}日 ${days[d.getDay()]}`;
 }
 
 export function formatTime(isoString: string): string {

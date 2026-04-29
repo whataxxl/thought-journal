@@ -2,9 +2,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Pencil, Calendar, Settings } from 'lucide-react';
 
 const TABS = [
-  { path: '/', label: 'Today', icon: Pencil },
-  { path: '/browse', label: 'Browse', icon: Calendar },
-  { path: '/settings', label: 'Settings', icon: Settings },
+  { path: '/', label: '今天', icon: Pencil },
+  { path: '/browse', label: '浏览', icon: Calendar },
+  { path: '/settings', label: '设置', icon: Settings },
 ] as const;
 
 export default function TabBar() {

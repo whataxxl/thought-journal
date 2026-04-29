@@ -39,16 +39,16 @@ export default function BrowsePage() {
 
   return (
     <div className="flex flex-col h-full bg-[#F2F2F7] px-4 pt-[max(env(safe-area-inset-top),16px)]">
-      <h1 className="text-[28px] font-bold text-black mt-2 mb-4">Browse</h1>
+      <h1 className="text-[28px] font-bold text-black mt-2 mb-4">浏览</h1>
 
       <div className="flex bg-white rounded-lg p-0.5 mb-2">
         <button onClick={() => setViewMode('all')}
           className={`flex-1 py-1.5 rounded-md text-[13px] font-semibold ${viewMode === 'all' ? 'bg-[#007AFF] text-white' : 'text-gray-500'}`}>
-          All
+          全部
         </button>
         <button onClick={() => setViewMode('date')}
           className={`flex-1 py-1.5 rounded-md text-[13px] font-semibold ${viewMode === 'date' ? 'bg-[#007AFF] text-white' : 'text-gray-500'}`}>
-          By Date
+          按日期
         </button>
       </div>
 
@@ -74,7 +74,7 @@ export default function BrowsePage() {
                 ))}
               </div>
             ))}
-            {sections.length === 0 && <p className="text-center text-gray-500 mt-16">No thoughts yet</p>}
+            {sections.length === 0 && <p className="text-center text-gray-500 mt-16">还没有想法</p>}
           </>
         )}
 
@@ -92,8 +92,8 @@ export default function BrowsePage() {
             {selectedDate && byDate.map((t) => (
               <ThoughtCard key={t.id} thought={t} onClick={() => navigate(`/thought/${t.id}`)} />
             ))}
-            {selectedDate && byDate.length === 0 && <p className="text-center text-gray-500 mt-8">No thoughts on this date</p>}
-            {!selectedDate && byTag.length > 0 && <p className="text-center text-gray-400 mt-8">Select a date above</p>}
+            {selectedDate && byDate.length === 0 && <p className="text-center text-gray-500 mt-8">这一天没有想法</p>}
+            {!selectedDate && byTag.length > 0 && <p className="text-center text-gray-400 mt-8">在上方选择日期</p>}
           </>
         )}
       </div>

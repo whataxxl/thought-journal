@@ -41,13 +41,13 @@ export default function ImagePicker({ images, onChange }: Props) {
             className="hidden" onChange={(e) => handleFiles(e.target.files)} />
           <button onClick={() => cameraRef.current?.click()}
             className="flex items-center gap-1 text-sm text-gray-500">
-            <Camera size={22} /> Photo
+            <Camera size={22} /> 拍照
           </button>
           <input ref={fileRef} type="file" accept="image/*" multiple
             className="hidden" onChange={(e) => handleFiles(e.target.files)} />
           <button onClick={() => fileRef.current?.click()}
             className="flex items-center gap-1 text-sm text-gray-500">
-            <Image size={22} /> Gallery
+            <Image size={22} /> 相册
           </button>
         </div>
       )}

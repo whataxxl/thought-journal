@@ -9,7 +9,7 @@ export default function SettingsPage() {
   const [exporting, setExporting] = useState(false);
 
   const handleDelete = async () => {
-    if (!confirm('Delete all thoughts and annotations? This cannot be undone.')) return;
+    if (!confirm('删除所有想法和批注？此操作不可撤销。')) return;
     setDeleting(true);
     await Promise.all([
       db.thoughts.clear(), db.annotations.clear(), db.tags.clear(),
@@ -20,43 +20,43 @@ export default function SettingsPage() {
 
   return (
     <div className="flex flex-col h-full bg-[#F2F2F7] px-4 pt-[max(env(safe-area-inset-top),16px)]">
-      <h1 className="text-[28px] font-bold text-black mt-2 mb-6">Settings</h1>
+      <h1 className="text-[28px] font-bold text-black mt-2 mb-6">设置</h1>
 
       <div className="bg-white rounded-xl p-4 mb-4">
-        <h2 className="text-[17px] font-semibold text-black mb-1">Location</h2>
+        <h2 className="text-[17px] font-semibold text-black mb-1">位置</h2>
         <p className="text-[15px] text-gray-500 leading-[22px] mb-2">
-          {permissionGranted ? 'Location access is granted.' : 'Location access is not granted.'}
+          {permissionGranted ? '已授权位置访问' : '未授权位置访问'}
         </p>
         {!permissionGranted && (
           <button onClick={requestPermission}
             className="bg-[#007AFF] text-white font-semibold rounded-lg px-4 py-2.5 text-[15px]">
-            Grant Access
+            授权访问
           </button>
         )}
       </div>
 
       <div className="bg-white rounded-xl p-4 mb-4">
-        <h2 className="text-[17px] font-semibold text-black mb-1">Export</h2>
-        <p className="text-[15px] text-gray-500 leading-[22px] mb-2">Export all thoughts as JSON and Markdown.</p>
+        <h2 className="text-[17px] font-semibold text-black mb-1">导出</h2>
+        <p className="text-[15px] text-gray-500 leading-[22px] mb-2">导出所有想法为 JSON 和 Markdown 格式</p>
         <button onClick={async () => { setExporting(true); await exportAll(); setExporting(false); }}
           disabled={exporting}
           className="bg-[#007AFF] text-white font-semibold rounded-lg px-4 py-2.5 text-[15px] disabled:opacity-50">
-          {exporting ? 'Exporting...' : 'Export Data'}
+          {exporting ? '导出中...' : '导出数据'}
         </button>
       </div>
 
       <div className="bg-white rounded-xl p-4 mb-4">
-        <h2 className="text-[17px] font-semibold text-black mb-1">Data</h2>
-        <p className="text-[15px] text-gray-500 leading-[22px] mb-2">Permanently delete all data.</p>
+        <h2 className="text-[17px] font-semibold text-black mb-1">数据</h2>
+        <p className="text-[15px] text-gray-500 leading-[22px] mb-2">永久删除所有数据</p>
         <button onClick={handleDelete} disabled={deleting}
           className="border border-red-500 text-red-500 font-semibold rounded-lg px-4 py-2.5 text-[15px]">
-          {deleting ? 'Deleting...' : 'Delete All Data'}
+          {deleting ? '删除中...' : '删除所有数据'}
         </button>
       </div>
 
       <div className="bg-white rounded-xl p-4">
-        <h2 className="text-[17px] font-semibold text-black mb-1">About</h2>
-        <p className="text-[15px] text-gray-500 leading-[22px]">Thought Journal v1.0 — PWA</p>
+        <h2 className="text-[17px] font-semibold text-black mb-1">关于</h2>
+        <p className="text-[15px] text-gray-500 leading-[22px]">想法记录 v1.0 — PWA</p>
       </div>
     </div>
   );

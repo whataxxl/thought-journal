@@ -39,23 +39,23 @@ export async function exportAll(): Promise<void> {
     grouped.get(key)!.push(t);
   }
 
-  const lines: string[] = ['# Thought Journal Export', `Exported on ${formatDateDisplay(now.toISOString())}`, ''];
+  const lines: string[] = ['# 想法记录导出', `导出时间 ${formatDateDisplay(now.toISOString())}`, ''];
   for (const [, items] of Array.from(grouped.entries()).sort((a, b) => b[0].localeCompare(a[0]))) {
     lines.push(`## ${formatDateDisplay(items[0].createdAt)}`, '');
     for (const t of items) {
       const header = [formatTime(t.createdAt)];
       if (t.mood) header.push(t.mood);
       lines.push(`### ${header.join(' — ')}`, '', t.content, '');
-      if (t.tags.length) lines.push(`**Tags:** ${t.tags.join(', ')}  `);
-      if (t.placeName) lines.push(`**Location:** ${t.placeName}  `);
+      if (t.tags.length) lines.push(`**标签：** ${t.tags.join(', ')}  `);
+      if (t.placeName) lines.push(`**位置：** ${t.placeName}  `);
       if (t.media.length) {
         const img = t.media.filter((m) => m.type === 'image').length;
         const aud = t.media.filter((m) => m.type === 'audio').length;
-        const parts = [img && `${img} image(s)`, aud && `${aud} audio(s)`].filter(Boolean);
-        lines.push(`**Media:** ${parts.join(', ')}  `);
+        const parts = [img && `${img} 张图片`, aud && `${aud} 段录音`].filter(Boolean);
+        lines.push(`**媒体：** ${parts.join(', ')}  `);
       }
       if (t.annotations.length) {
-        lines.push('', '**Annotations:**', '');
+        lines.push('', '**批注：**', '');
         for (const a of t.annotations) {
           lines.push(`> *${formatTime(a.createdAt)}${a.placeName ? `, ${a.placeName}` : ''} — §${a.paragraphIndex}*`);
           lines.push(`> ${a.content}`, '> ');
