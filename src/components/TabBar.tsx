@@ -15,7 +15,7 @@ export default function TabBar() {
   return (
     <div className="flex bg-white border-t border-gray-200 pb-[env(safe-area-inset-bottom,0px)]">
       {TABS.map(({ path, label, icon: Icon }) => {
-        const active = pathname === path || (path === '/' && pathname === '/');
+        const active = pathname === path;
         return (
           <button key={path} onClick={() => navigate(path)}
             className="flex-1 flex flex-col items-center py-2">
